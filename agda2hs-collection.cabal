@@ -6,13 +6,14 @@ cabal-version: 1.12
 
 name:           agda2hs-collection
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/agda2hs-collection#readme>
-homepage:       https://github.com/githubuser/agda2hs-collection#readme
-bug-reports:    https://github.com/githubuser/agda2hs-collection/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2023 Author name here
+description:    Please see the README on GitHub at <https://github.com/sarajuhosova/agda2hs-collection#readme>
+homepage:       https://github.com/sarajuhosova/agda2hs-collection#readme
+bug-reports:    https://github.com/sarajuhosova/agda2hs-collection/issues
+author:         Sára Juhošová
+maintainer:     s.juhosova@student.tudelft.nl
+copyright:      2023 Sára Juhošová
 license:        BSD3
+license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
@@ -20,12 +21,13 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/agda2hs-collection
+  location: https://github.com/sarajuhosova/agda2hs-collection
 
 library
   exposed-modules:
       Duckling.Types
       Examples.Challenges
+      GitMediate.Conflict
       Lib
   other-modules:
       Paths_agda2hs_collection
@@ -34,6 +36,8 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , text
+    , unordered-containers
   default-language: Haskell2010
 
 executable agda2hs-collection-exe
@@ -46,6 +50,8 @@ executable agda2hs-collection-exe
   build-depends:
       agda2hs-collection
     , base >=4.7 && <5
+    , text
+    , unordered-containers
   default-language: Haskell2010
 
 test-suite agda2hs-collection-test
@@ -59,4 +65,6 @@ test-suite agda2hs-collection-test
   build-depends:
       agda2hs-collection
     , base >=4.7 && <5
+    , text
+    , unordered-containers
   default-language: Haskell2010
