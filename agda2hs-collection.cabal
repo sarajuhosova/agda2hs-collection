@@ -25,17 +25,17 @@ source-repository head
 
 library
   exposed-modules:
-      Duckling.Types
       Examples.Challenges
-      GitMediate.Conflict
       Lib
+      SearchTree.SearchTree
   other-modules:
       Paths_agda2hs_collection
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      QuickCheck
+    , base >=4.7 && <5
     , text
     , unordered-containers
   default-language: Haskell2010
@@ -48,7 +48,8 @@ executable agda2hs-collection-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      agda2hs-collection
+      QuickCheck
+    , agda2hs-collection
     , base >=4.7 && <5
     , text
     , unordered-containers
@@ -63,7 +64,8 @@ test-suite agda2hs-collection-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      agda2hs-collection
+      QuickCheck
+    , agda2hs-collection
     , base >=4.7 && <5
     , text
     , unordered-containers
