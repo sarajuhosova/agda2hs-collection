@@ -25,6 +25,9 @@ dependencies:
 - text
 # - hashable
 - unordered-containers
+- mtl
+- generic-data
+- base-compat
 
 ghc-options:
 - -Wall
