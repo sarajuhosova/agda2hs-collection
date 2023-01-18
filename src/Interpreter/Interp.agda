@@ -42,8 +42,8 @@ interp (EOr left right) =
 ------------------------------------------------------------
 
 typeOf : Expr → Maybe Type
-typeOf (EBool b) = Just TBool
-typeOf (EInt i) = Just TInt
+typeOf (EBool _) = Just TBool
+typeOf (EInt _) = Just TInt
 typeOf (EAdd left right) =
     case (typeOf left , typeOf right) of λ where
         (Just TInt , Just TInt) → Just TInt

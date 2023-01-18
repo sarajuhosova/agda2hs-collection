@@ -26,6 +26,9 @@ source-repository head
 library
   exposed-modules:
       Examples.Challenges
+      Interpreter.Interp
+      Interpreter.Lang
+      Interpreter.Safe
       Lib
       SearchTree.SearchTree
   other-modules:
