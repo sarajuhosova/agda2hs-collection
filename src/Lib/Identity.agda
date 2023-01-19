@@ -4,7 +4,6 @@ open import Haskell.Prelude
 
 import Relation.Binary.PropositionalEquality as PEq
 open PEq using (_≡_; refl)
-open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; _∎)
 
 ------------------------------------------------------------
 -- DEFINTION                                              --

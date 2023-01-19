@@ -2,6 +2,10 @@ module Interpreter.Lang where
 
 open import Haskell.Prelude
 
+import Relation.Binary.PropositionalEquality as PEq
+open PEq using (_≡_; refl; cong; sym)
+open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
+
 ------------------------------------------------------------
 -- TYPES                                                  --
 ------------------------------------------------------------
@@ -68,3 +72,13 @@ instance
   iEqVal ._==_ = eqVal
 
 {-# COMPILE AGDA2HS Val #-}
+
+≡-bool : ∀ (left right : Bool) → (left == right) ≡ True → left ≡ right
+≡-bool False False _ = refl
+≡-bool True True _ = refl
+
+postulate ≡-int : ∀ (left right : Int) → (left == right) ≡ True → left ≡ right
+
+≡-val : ∀ (left right : Val) → (left == right) ≡ True → left ≡ right
+≡-val (VBool a) (VBool b) h rewrite ≡-bool a b h = refl
+≡-val (VInt x) (VInt y) h rewrite ≡-int x y h = refl
