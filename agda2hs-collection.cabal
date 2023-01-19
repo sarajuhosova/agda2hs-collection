@@ -30,6 +30,7 @@ library
       Interpreter.Lang
       Interpreter.Safe
       Lib
+      Pandoc.Definition
       SearchTree.SearchTree
   other-modules:
       Paths_agda2hs_collection

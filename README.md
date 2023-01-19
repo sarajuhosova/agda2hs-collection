@@ -6,6 +6,7 @@ It is meant to be able to showcase the abilities and limitations of Agda2HS, as 
 The following modules are included:
 
 1. `HLedger`: with code extracted from the open source [hledger](https://github.com/simonmichael/hledger)
+2. `Pandoc`: with code extracted from the open source [`pandoc-types`](https://github.com/jgm/pandoc-types)
 
 
 ## Using Agda2HS
