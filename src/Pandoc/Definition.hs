@@ -1,4 +1,4 @@
-module Pandoc.Definition where
+module Pandoc.Definition ( Inline(..), Block(..) ) where
 
 -- extracted from: https://github.com/jgm/pandoc-types/blob/master/src/Text/Pandoc/Definition.hs
 
