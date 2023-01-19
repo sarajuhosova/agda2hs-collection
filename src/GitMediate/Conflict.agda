@@ -24,12 +24,24 @@ record Sides (a : Set) : Set where
 open Sides public
 
 instance
-  iFunctorSides : Functor Sides
-  iFunctorSides .fmap f record { sideA = a ; sideBase = base ; sideB = b } 
-    = record { sideA = f a ; sideBase = f base ; sideB = f b }
+    iFunctorSides : Functor Sides
+    iFunctorSides .fmap f record { sideA = a ; sideBase = base ; sideB = b } 
+        = record { sideA = f a ; sideBase = f base ; sideB = f b }
+
+    iApplicativeSides : Applicative Sides
+    iApplicativeSides .pure x = record { sideA = x ; sideBase = x ; sideB = x }
+    iApplicativeSides ._<*>_
+        (record { sideA = fA ; sideBase = fBase ; sideB = fB })
+        (record { sideA = xA ; sideBase = xBase ; sideB = xB })
+        = (record { sideA = fA xA ; sideBase = fBase xBase ; sideB = fB xB })
+
+    iFoldableSides : Foldable Sides
+    iFoldableSides .foldMap f record { sideA = sideA ; sideBase = sideBase ; sideB = sideB } = {!   !}
 
 {-# COMPILE AGDA2HS Sides #-}
 {-# COMPILE AGDA2HS iFunctorSides #-}
+{-# COMPILE AGDA2HS iApplicativeSides #-}
+-- {-# COMPILE AGDA2HS iFoldableSides #-}
 
 -- data Conflict = Conflict
 --     { cMarkers   :: Sides (LineNo, String) -- The markers at the beginning of sections
@@ -86,7 +98,7 @@ setStrings = setEachBody ∘ map
 
 prettyLines : Conflict -> List String
 prettyLines record { cMarkers = cMarkers ; cMarkerEnd = cMarkerEnd ; cBodies = cBodies } 
-    = {!   !}
+    = concat (((List._∷_) <$> (Pair.snd <$> cMarkers) <*> cBodies)) <> ((Pair.snd cMarkerEnd) ∷ [])
 
 {-# COMPILE AGDA2HS prettyLines #-}
 
