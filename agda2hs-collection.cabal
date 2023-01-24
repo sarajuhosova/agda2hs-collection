@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Examples.Challenges
+      Interpreter.Interp
+      Interpreter.Lang
       Lib.Identity
       Pandoc.Definition
       Pandoc.Meta
