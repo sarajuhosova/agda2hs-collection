@@ -30,6 +30,7 @@ library
       Interpreter.Interp
       Interpreter.Lang
       Interpreter.Safe
+      Ledger.Operations
       Lib
       SearchTree.SearchTree
   other-modules:
