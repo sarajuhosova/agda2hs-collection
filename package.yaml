@@ -28,6 +28,7 @@ dependencies:
 - mtl
 - generic-data
 - base-compat
+- containers
 
 ghc-options:
 - -Wall

@@ -7,6 +7,7 @@ The following modules are included:
 
 1. `HLedger`: with code extracted from the open source [hledger](https://github.com/simonmichael/hledger)
 2. `git-mediate`: with code extracted from the open source [Git Mediate](https://github.com/Peaker/git-mediate)
+3. `Pandoc`: with code extracted from the open source [`pandoc-types`](https://github.com/jgm/pandoc-types)
 
 
 ## Using Agda2HS

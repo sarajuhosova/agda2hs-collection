@@ -32,6 +32,8 @@ library
       Interpreter.Safe
       Ledger.Operations
       Lib
+      Pandoc.Definition
+      Pandoc.Meta
       SearchTree.SearchTree
   other-modules:
       Paths_agda2hs_collection
@@ -42,6 +44,7 @@ library
       QuickCheck
     , base >=4.7 && <5
     , base-compat
+    , containers
     , generic-data
     , mtl
     , text
@@ -60,6 +63,7 @@ executable agda2hs-collection-exe
     , agda2hs-collection
     , base >=4.7 && <5
     , base-compat
+    , containers
     , generic-data
     , mtl
     , text
@@ -79,6 +83,7 @@ test-suite agda2hs-collection-test
     , agda2hs-collection
     , base >=4.7 && <5
     , base-compat
+    , containers
     , generic-data
     , mtl
     , text
