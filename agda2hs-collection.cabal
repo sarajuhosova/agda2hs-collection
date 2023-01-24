@@ -26,19 +26,14 @@ source-repository head
 library
   exposed-modules:
       Examples.Challenges
-      GitMediate.Conflict
-      Interpreter.Interp
-      Interpreter.Lang
-      Interpreter.Safe
-      Ledger.Operations
-      Lib
+      Lib.Identity
       Pandoc.Definition
       Pandoc.Meta
       SearchTree.SearchTree
   other-modules:
       Paths_agda2hs_collection
   hs-source-dirs:
-      src
+      _haskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       QuickCheck
