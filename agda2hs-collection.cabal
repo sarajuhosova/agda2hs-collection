@@ -28,6 +28,7 @@ library
       Examples.Challenges
       Interpreter.Interp
       Interpreter.Lang
+      Interpreter.Safe
       Lib.Identity
       Pandoc.Definition
       Pandoc.Meta
