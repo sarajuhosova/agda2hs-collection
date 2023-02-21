@@ -54,6 +54,14 @@ instance
 {-# COMPILE AGDA2HS eqTree #-}
 {-# COMPILE AGDA2HS iEqTree #-}
 
+-- Newtype ----------------------------------------------------
+
+record Identity (a : Set) : Set where
+    constructor Identityₙ
+    field
+        runIdentity : a
+open Identity public
+
 -- Witnesses in Flow Control ----------------------------------
 
 flow : Int → Int → Int

@@ -12,3 +12,7 @@ passed grade
 
 data Tree = Leaf | Branch Int Tree Tree
     deriving ( Eq )
+
+-- Newtype ----------------------------------------------------
+
+newtype Identity a = Identity a
