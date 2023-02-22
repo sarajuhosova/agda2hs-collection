@@ -44,8 +44,8 @@ ghc-options:
 library:
   source-dirs: src
 
-library:
-  source-dirs: _haskell
+# library:
+#   source-dirs: _haskell
 
 executables:
   agda2hs-collection-exe:
