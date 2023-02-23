@@ -1,6 +1,6 @@
 module Main (main) where
 
-import NewType.Behaviour ( run )
+import qualified FlowWitness.BinTree as BT
 
 main :: IO ()
-main = run
+main = BT.main

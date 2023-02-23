@@ -27,6 +27,8 @@ library
   exposed-modules:
       Documentation.Structures
       Examples.Challenges
+      FlowWitness.BinTree
+      FlowWitness.Playground
       GitMediate.Conflict
       Interpreter.Interp
       Interpreter.Lang
