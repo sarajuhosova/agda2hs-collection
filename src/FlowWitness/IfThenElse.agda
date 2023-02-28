@@ -14,34 +14,21 @@ flow i j = if i == j then {!   !} else {!   !}
 -- case'_of_ : {A B : Set} → (a : A) → ((a' : A) → {eq : a ≡ a'} → B) → B
 -- case' x of f = f x { refl }
 
-if'_then_else_ : {A : Set} → (flg : Bool) → ({flg ≡ True} → A) → ({flg ≡ False} → A) → A
-if' True then t else f = t {refl}
-if' False then t else f = f {refl}
-
-flow' : Int → Int → Int
-flow' i j = if' i == j then (λ {h} → {!   !}) else (λ {h} → {!   !})
-
--- with box
--- case''_of_ : {A B : Set} → (a : A) → (∃ A (_≡_ a) → B) → B
--- case'' x of f = f (x [ refl ])
-
 if''_then_else_ : {A : Set} → (flg : Bool) → ({flg ≡ True} → A) → ({flg ≡ False} → A) → A
-if'' c then t else f = {!   !}
+if'' True then t else f = t {refl}
+if'' False then t else f = f {refl}
 
 flow'' : Int → Int → Int
-flow'' i j = if'' i == j then {!   !} else {!   !}
+flow'' i j = if'' i == j then (λ {h} → {!   !}) else (λ {h} → {!   !})
 
--- with witness
--- case'''_of_ : {A B : Set} → (a : A) → (Witness A a → B) → B
--- case''' x of f = f (x [ refl ])
+-- test
 
-if'''_then_else_ : {A : Set} → (flg : Bool) → ({flg ≡ True} → A) → ({flg ≡ False} → A) → A
-if''' c then t else f = {!   !}
+test : @0 True ≡ True → Int
+test h = 0
 
-flow''' : Int → Int → Int
-flow''' i j = if'' i == j then {!   !} else {!   !}
+{-# COMPILE AGDA2HS test #-}
 
--- with witness WITHOUT NEW CASE
+floww : Int → Int → Bool
+floww i j = if' (i == j) then (λ h → False) else (λ h → True)
 
-flowWithWitness : Int → Int → Int
-flowWithWitness i j = if i == j then {!   !} else {!   !}
+{-# COMPILE AGDA2HS floww #-}

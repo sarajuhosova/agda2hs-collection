@@ -69,6 +69,14 @@ flowWithWitness i j =
 
 {-# COMPILE AGDA2HS flowWithWitness #-}
 
+flowWithWitnessInt : Int → Int → Int
+flowWithWitnessInt i j =
+  case (witness (i == j)) of λ where
+    (True [ h ]) → 0
+    (False [ h ]) → 1
+
+{-# COMPILE AGDA2HS flowWithWitnessInt #-}
+
 binTreeWithWitness : BinTree NegInf PosInf → Bool
 binTreeWithWitness t =
   case (witness t) of λ where
