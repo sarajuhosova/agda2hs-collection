@@ -37,19 +37,24 @@ flow'' i j =
 
 -- with witness
 case'''_of_ : {A B : Set} → (a : A) → (Witness A a → B) → B
-case''' x of f = f (x [ refl ])
+case''' x of f = -- f (x [ refl ])
+  case (x <>) of f
 
-flow''' : Int → Int → Int
-flow''' i j =
+-- {-# COMPILE AGDA2HS case'''_of_ transparent #-}
+
+floww : Int → Int → Bool
+floww i j =
   case''' ( i == j ) of λ where
-    (True [ h ]) → {!   !}
-    (False [ h ]) → {!   !}
+    (True <>) → False
+    (False <>) → True
+
+-- {-# COMPILE AGDA2HS floww #-}
 
 binTreeFlow : BinTree NegInf PosInf → Int
 binTreeFlow t =
   case''' t of λ where
-    (Leaf [ h ]) → {!   !}
-    ((Branch x left right) [ h ]) → {!   !}
+    (Leaf <>) → {!   !}
+    ((Branch x left right) <>) → {!   !}
 
 -- with witness WITHOUT NEW CASE
 
@@ -64,24 +69,24 @@ flowWithout i j =
 flowWithWitness : Int → Int → Bool
 flowWithWitness i j =
   case (witness (i == j)) of λ where
-    (True [ h ]) → False
-    (False [ h ]) → True
+    (True <>) → False
+    (False <>) → True
 
 {-# COMPILE AGDA2HS flowWithWitness #-}
 
-flowWithWitnessInt : Int → Int → Int
-flowWithWitnessInt i j =
-  case (witness (i == j)) of λ where
-    (True [ h ]) → 0
-    (False [ h ]) → 1
+-- flowWithWitnessInt : Int → Int → Int
+-- flowWithWitnessInt i j =
+--   case (witness (i == j)) of λ where
+--     (True <>) → 0
+--     (False <>) → 1
 
-{-# COMPILE AGDA2HS flowWithWitnessInt #-}
+-- {-# COMPILE AGDA2HS flowWithWitnessInt #-}
 
 binTreeWithWitness : BinTree NegInf PosInf → Bool
 binTreeWithWitness t =
   case (witness t) of λ where
-    (Leaf [ h ]) → False
-    ((Branch x left right) [ h ]) → True
+    (Leaf <>) → False
+    ((Branch x left right) <>) → True
 
 {-# COMPILE AGDA2HS binTreeWithWitness #-}
   

@@ -12,6 +12,10 @@ allMatch f (x ∷ is) = f x && allMatch f is
 
 {-# COMPILE AGDA2HS allMatch #-}
 
+allMatchTrue : ∀ {A : Set} (xs : List A) → (allMatch (λ x → True) xs) ≡ True
+allMatchTrue [] = refl
+allMatchTrue (x ∷ xs) = allMatchTrue xs
+
 allMatchHead : ∀ (x : a) (xs : List a) (f : a → Bool) 
                → allMatch f (x ∷ xs) ≡ True
                → f x ≡ True

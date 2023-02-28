@@ -6,6 +6,7 @@ open import Haskell.Prelude
 
 open import FlowWitness.Witness
 open import Lib.BoxedProof
+open import Lib.InfInt
 
 flow : Int → Int → Int
 flow i j = if i == j then {!   !} else {!   !}
@@ -28,7 +29,28 @@ test h = 0
 
 {-# COMPILE AGDA2HS test #-}
 
-floww : Int → Int → Bool
-floww i j = if' (i == j) then (λ h → False) else (λ h → True)
+-- floww : Int → Int → Bool
+-- floww i j = if' (i == j) then (λ h → False) else (λ h → True)
 
-{-# COMPILE AGDA2HS floww #-}
+-- {-# COMPILE AGDA2HS floww #-}
+
+-- data ValueInRange (@0 low high : InfInt) : Set where
+--     Value : (i : Int)
+--             → {{ @0 hl : ((low <= (IInt i)) ≡ True) }}
+--             → {{ @0 hr : (((IInt i) <= high) ≡ True) }}
+--             → ValueInRange low high
+
+data Range : Set where
+    MkRange : (low high : Int)
+            → {{ @0 h : ((low <= high) ≡ True) }}
+            → Range
+
+{-# COMPILE AGDA2HS Range #-}
+
+-- createRange' : Int → Int → Maybe Range
+-- createRange' low high = if low <= high then Just (MkRange low high) else Nothing
+
+createRange : Int → Int → Maybe Range
+createRange low high = if' low <= high then Just (MkRange low high) else Nothing
+
+{-# COMPILE AGDA2HS createRange #-}

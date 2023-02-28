@@ -17,7 +17,7 @@ add : ∀ {@0 min max : InfInt}
 add i Leaf h1 h2 = Branch i (Leaf {{ h1 }}) (Leaf {{ h2 }})
 add i (Branch x left right) h1 h2 =
     case''' i < x of λ where
-        (True [ hlt ]) → Branch x (add i left h1 hlt) right
-        (False [ _ ]) → case''' x < i of λ where
-            (True [ hgt ]) → Branch x left (add i right hgt h2)
-            (False [ _ ]) → Branch x left right
+        (True < hlt >) → Branch x (add i left h1 hlt) right
+        (False <>) → case''' x < i of λ where
+            (True < hgt >) → Branch x left (add i right hgt h2)
+            (False <>) → Branch x left right
