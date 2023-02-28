@@ -53,19 +53,27 @@ binTreeFlow t =
 
 -- with witness WITHOUT NEW CASE
 
-flowWithWitness : Int → Int → Int
+flowWithout : Int → Int → Int
+flowWithout i j =
+  case (i == j) of λ where
+    True → 0
+    False → 1
+
+-- {-# COMPILE AGDA2HS flowWithout #-}
+
+flowWithWitness : Int → Int → Bool
 flowWithWitness i j =
-  case (toWitness (i == j)) of λ where
-    (True [ h ]) → {!   !}
-    (False [ h ]) → 1
+  case (witness (i == j)) of λ where
+    (True [ h ]) → False
+    (False [ h ]) → True
 
 {-# COMPILE AGDA2HS flowWithWitness #-}
 
-binTreeWithWitness : BinTree NegInf PosInf → Int
+binTreeWithWitness : BinTree NegInf PosInf → Bool
 binTreeWithWitness t =
-  case (toWitness t) of λ where
-    (Leaf [ h ]) → 0
-    ((Branch x left right) [ h ]) → 1
+  case (witness t) of λ where
+    (Leaf [ h ]) → False
+    ((Branch x left right) [ h ]) → True
 
 {-# COMPILE AGDA2HS binTreeWithWitness #-}
   

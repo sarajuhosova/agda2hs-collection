@@ -11,7 +11,19 @@ open Witness public
 
 {-# COMPILE AGDA2HS Witness unboxed #-}
 
-toWitness : {A : Set} → (a : A) → Witness A a
-toWitness a = a [ refl ]
+witness : {A : Set} → (a : A) → Witness A a
+witness a = a [ refl ]
 
-{-# COMPILE AGDA2HS toWitness #-}
+{-# COMPILE AGDA2HS witness #-}
+
+-- record Unboxable (a b : Set) : Set where
+--   field
+--     unbox : b → a
+
+-- open Unboxable ⦃ ... ⦄ public
+
+-- {-# COMPILE AGDA2HS Unboxable class #-}
+
+-- instance
+--   iUnboxableWitness : Unboxable a (Witness a a)
+--   iUnboxableWitness = ?

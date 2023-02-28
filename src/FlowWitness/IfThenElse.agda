@@ -19,7 +19,7 @@ if' True then t else f = t {refl}
 if' False then t else f = f {refl}
 
 flow' : Int → Int → Int
-flow' i j = if' i == j then {!   !} else {!   !}
+flow' i j = if' i == j then (λ {h} → {!   !}) else (λ {h} → {!   !})
 
 -- with box
 -- case''_of_ : {A B : Set} → (a : A) → (∃ A (_≡_ a) → B) → B
@@ -41,3 +41,7 @@ if''' c then t else f = {!   !}
 flow''' : Int → Int → Int
 flow''' i j = if'' i == j then {!   !} else {!   !}
 
+-- with witness WITHOUT NEW CASE
+
+flowWithWitness : Int → Int → Int
+flowWithWitness i j = if i == j then {!   !} else {!   !}
