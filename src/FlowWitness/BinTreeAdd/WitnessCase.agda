@@ -1,4 +1,4 @@
-module FlowWitness.BinTreeAdd.Unbox where
+module FlowWitness.BinTreeAdd.WitnessCase where
 
 open import Haskell.Prelude
 

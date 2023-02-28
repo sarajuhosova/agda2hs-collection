@@ -4,16 +4,10 @@ module FlowWitness.Case where
 
 open import Haskell.Prelude
 
+open import FlowWitness.Witness
+open import FlowWitness.BinTree
+open import Lib.InfInt
 open import Lib.BoxedProof
-
-record Witness (A : Set) (a : A) : Set where
-  constructor _[_]
-  field
-    el : A
-    @0 pf : _≡_ a el
-open Witness public
-
-{-# COMPILE AGDA2HS Witness unboxed #-}
 
 flow : Int → Int → Int
 flow i j =
@@ -50,4 +44,28 @@ flow''' i j =
   case''' ( i == j ) of λ where
     (True [ h ]) → {!   !}
     (False [ h ]) → {!   !}
+
+binTreeFlow : BinTree NegInf PosInf → Int
+binTreeFlow t =
+  case''' t of λ where
+    (Leaf [ h ]) → {!   !}
+    ((Branch x left right) [ h ]) → {!   !}
+
+-- with witness WITHOUT NEW CASE
+
+flowWithWitness : Int → Int → Int
+flowWithWitness i j =
+  case (toWitness (i == j)) of λ where
+    (True [ h ]) → {!   !}
+    (False [ h ]) → 1
+
+{-# COMPILE AGDA2HS flowWithWitness #-}
+
+binTreeWithWitness : BinTree NegInf PosInf → Int
+binTreeWithWitness t =
+  case (toWitness t) of λ where
+    (Leaf [ h ]) → 0
+    ((Branch x left right) [ h ]) → 1
+
+{-# COMPILE AGDA2HS binTreeWithWitness #-}
   
