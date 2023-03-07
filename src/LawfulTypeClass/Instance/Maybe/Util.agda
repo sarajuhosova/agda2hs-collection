@@ -1,14 +1,11 @@
-module LawfulTypeClass.Eq.IEqMaybe where
+module LawfulTypeClass.Instance.Maybe.Util where
 
-open import Haskell.Prelude
+open import Haskell.Prelude using ( Maybe; Just; Nothing; _==_; True; Eq; a )
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; sym; cong)
+open PEq using ( _≡_; refl; sym; cong )
 
 open import LawfulTypeClass.Eq.Extended
-open import LawfulTypeClass.Eq.Extended1
-open import LawfulTypeClass.Eq.Extended2
-open import LawfulTypeClass.Eq.Composed
 
 equalityMaybe : {{ iEqA : Eq a }} {{ iLawfulEqA : LawfulEq₂ a }}
   → ∀ (x y : Maybe a) → (x == y) ≡ True → x ≡ y
@@ -21,10 +18,3 @@ equalityMaybe' : {{ iEqA : Eq a }} {{ iLawfulEqA : LawfulEq₂ a }}
 equalityMaybe' Nothing Nothing _ = refl
 equalityMaybe' {{ _ }} {{ lEq }} (Just x) (Just y) refl
   = LawfulEq₂.equality' lEq x y refl
-
-instance
-  iLawfulMaybe₂ : {{ iEqA : Eq a }} → {{ iLawfulEqA : LawfulEq₂ a }} → LawfulEq₂ (Maybe a)
-  iLawfulMaybe₂ = λ where
-    .equality → equalityMaybe
-    .equality' → equalityMaybe'
- 

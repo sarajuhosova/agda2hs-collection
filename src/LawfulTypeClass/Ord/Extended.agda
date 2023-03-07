@@ -24,33 +24,33 @@ record LawfulOrd (a : Set) {{iOrd : Ord a}} : Set₁ where
         
 open LawfulOrd ⦃ ... ⦄ public
 
-compBool : ∀ (x y : Bool) → (x <= y || y <= x) ≡ True
-compBool False False = refl
-compBool False True = refl
-compBool True False = refl
-compBool True True = refl
+-- compBool : ∀ (x y : Bool) → (x <= y || y <= x) ≡ True
+-- compBool False False = refl
+-- compBool False True = refl
+-- compBool True False = refl
+-- compBool True True = refl
 
-transBool : ∀ ( x y z : Bool ) → {{ (x <= y) ≡ True }} → {{ (y <= z) ≡ True }} → (x <= z) ≡ True
-transBool False False False = refl
-transBool False False True = refl
-transBool False True True = refl
-transBool True True True = refl
+-- transBool : ∀ ( x y z : Bool ) → {{ (x <= y) ≡ True }} → {{ (y <= z) ≡ True }} → (x <= z) ≡ True
+-- transBool False False False = refl
+-- transBool False False True = refl
+-- transBool False True True = refl
+-- transBool True True True = refl
 
-reflBool : ∀ (x : Bool) → (x <= x) ≡ True
-reflBool False = refl
-reflBool True = refl
+-- reflBool : ∀ (x : Bool) → (x <= x) ≡ True
+-- reflBool False = refl
+-- reflBool True = refl
 
-antisymBool : ∀ (x y : Bool) → {{ (x <= y) ≡ True }} → {{ (y <= x) ≡ True }} → x ≡ y
-antisymBool False False = refl
-antisymBool True True = refl
+-- antisymBool : ∀ (x y : Bool) → {{ (x <= y) ≡ True }} → {{ (y <= x) ≡ True }} → x ≡ y
+-- antisymBool False False = refl
+-- antisymBool True True = refl
 
-instance
-    iLawfulOrdBool : LawfulOrd Bool
-    iLawfulOrdBool = λ where
-        .comparability → compBool
-        .transitivity → transBool
-        .reflexivity → reflBool
-        .antisymmetry → antisymBool
+-- instance
+--     iLawfulOrdBool : LawfulOrd Bool
+--     iLawfulOrdBool = λ where
+--         .comparability → compBool
+--         .transitivity → transBool
+--         .reflexivity → reflBool
+--         .antisymmetry → antisymBool
 
 
 record LawfulOrd₁ (a : Set) {{iOrd : Ord a}} : Set₁ where
