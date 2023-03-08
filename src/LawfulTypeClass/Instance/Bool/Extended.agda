@@ -6,6 +6,7 @@ import Relation.Binary.PropositionalEquality as PEq
 open PEq using ( refl; sym; cong )
 
 open import LawfulTypeClass.Eq.Extended
+open import LawfulTypeClass.Ord.Extended
 
 open import LawfulTypeClass.Instance.Bool.Util
 
@@ -29,3 +30,11 @@ instance
     iLawfulBool₂ = λ where
         .equality → equalityBool
         .equality' → equalityBool'
+
+    iLawfulOrdBool : LawfulOrd Bool
+    iLawfulOrdBool = λ where
+        .comparability → compBool
+        .transitivity → transBool
+        .reflexivity → reflBool
+        .antisymmetry → antisymBool
+        

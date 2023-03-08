@@ -13,10 +13,5 @@ instance
   iLawInt : LawEq Int
   iLawInt = λ where
     .iEqE → iEqInt
-    .equality → {!   !}
-    .equality' → {!   !}
-    .reflexivity → λ _ → refl
-    .symmetry → λ _ _ h → sym h
-    .transitivity → λ _ _ _ hxy hyx → {!  !}
-    .extensionality → λ _ _ f h → cong f h
-    .negation → λ _ _ → refl
+    .equality → equalityInt
+    .equality' → equalityInt'

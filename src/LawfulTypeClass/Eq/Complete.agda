@@ -12,6 +12,7 @@ record Eq (a : Set) : Set where
 
         equality  : ∀ (x y : a) → (x == y) ≡ True → x ≡ y
         equality' : ∀ (x y : a) → x ≡ y → (x == y) ≡ True
+        -- equivalent to: ∀ (x y : a) → (x == y) ≡ False → (x ≡ y → ⊥)
     
     _/=_ : a → a → Bool
     x /= y = not (x == y)
