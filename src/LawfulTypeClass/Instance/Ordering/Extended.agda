@@ -22,3 +22,15 @@ instance
         .transitivity → transOrdering
         .reflexivity → reflOrdering
         .antisymmetry → antisymOrdering
+        .lte2gte → lte2gteOrdering
+        .lNotLteNeq → lNotLteNeqOrdering
+        .lt2gt → lt2gtOrdering
+        .compareLt → compareLtOrdering
+        .compareLt' → compareLtOrdering'
+        .compareGt → compareGtOrdering
+        .compareGt' → compareGtOrdering'
+        .compareEq → compareEqOrdering
+        .compareEq' → compareEqOrdering'
+        .min2if → min2ifOrdering
+        .max2if → max2ifOrdering
+        

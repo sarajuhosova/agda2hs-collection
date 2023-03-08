@@ -9,46 +9,29 @@ open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
 open import LawfulTypeClass.Eq.Extended
 open import LawfulTypeClass.Ord.Extended
 
-open import LawfulTypeClass.Instance.Ordering.Extended
-
-equalityMaybe : {{ iEqA : Eq a }} {{ iLawfulEqA : LawfulEq₂ a }}
-    → ∀ (x y : Maybe a) → (x == y) ≡ True → x ≡ y
-equalityMaybe Nothing Nothing _ = refl
-equalityMaybe {{ _ }} {{ lEq }} (Just x) (Just y) h
-    = cong Just (LawfulEq₂.equality lEq x y h)
-
-equalityMaybe' : {{ iEqA : Eq a }} {{ iLawfulEqA : LawfulEq₂ a }}
-    → ∀ (x y : Maybe a) → x ≡ y → (x == y) ≡ True
-equalityMaybe' Nothing Nothing _ = refl
-equalityMaybe' {{ _ }} {{ lEq }} (Just x) (Just y) refl
-    = LawfulEq₂.equality' lEq x y refl
-
-reflMaybe : {{ iOrdA : Ord a }} → {{ iLawfulOrdA : LawfulOrd a }}
-    → ∀ (x : Maybe a) → (x <= x) ≡ True
-reflMaybe Nothing = refl
-reflMaybe {{ ord }} {{ lOrd }} (Just x) =
-  begin
-    (Just x) <= (Just x)
-  ≡⟨⟩
-    not ((iEqOrdering Eq.== Ord.compare ord x x) GT)
-  ≡⟨⟩
-    Ord.compare ord x x /= GT
-  ≡⟨ {!   !} ⟩
-    EQ /= GT
-  ≡⟨⟩
-    True
-  ∎
+open import LawfulTypeClass.Instance.Maybe.Util
 
 instance
-    iLawfulMaybe₂ : {{ iEqA : Eq a }} → {{ iLawfulEqA : LawfulEq₂ a }} → LawfulEq₂ (Maybe a)
-    iLawfulMaybe₂ = λ where
+    iLawfulMaybe : {{ iEqA : Eq a }} → {{ iLawfulEqA : LawfulEq₂ a }} → LawfulEq₂ (Maybe a)
+    iLawfulMaybe = λ where
         .equality → equalityMaybe
         .equality' → equalityMaybe'
 
     iLawfulOrdMaybe : {{ iOrdA : Ord a }} → {{ iLawfulOrdA : LawfulOrd a }} → LawfulOrd (Maybe a)
     iLawfulOrdMaybe = λ where
-        .comparability → {!   !}
-        .transitivity → {!   !}
+        .comparability → compMaybe
+        .transitivity → transMaybe
         .reflexivity → reflMaybe
-        .antisymmetry → {!   !}
+        .antisymmetry → antisymMaybe
+        .lte2gte → lte2gteMaybe
+        .lNotLteNeq → lNotLteNeqMaybe
+        .lt2gt → lt2gtMaybe
+        .compareLt → compareLtMaybe
+        .compareLt' → compareLtMaybe'
+        .compareGt → compareGtMaybe
+        .compareGt' → compareGtMaybe'
+        .compareEq → compareEqMaybe
+        .compareEq' → compareEqMaybe'
+        .min2if → min2ifMaybe
+        .max2if → max2ifMaybe
 

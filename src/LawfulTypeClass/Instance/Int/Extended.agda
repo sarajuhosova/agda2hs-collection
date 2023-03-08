@@ -37,3 +37,14 @@ instance
         .transitivity → transInt
         .reflexivity → reflInt
         .antisymmetry → antisymInt
+        .lte2gte → lte2gteInt
+        .lNotLteNeq → lNotLteNeqInt
+        .lt2gt → lt2gtInt
+        .compareLt → compareLtInt
+        .compareLt' → compareLtInt'
+        .compareGt → compareGtInt
+        .compareGt' → compareGtInt'
+        .compareEq → compareEqInt
+        .compareEq' → compareEqInt'
+        .min2if → min2ifInt
+        .max2if → max2ifInt

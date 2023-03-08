@@ -37,4 +37,15 @@ instance
         .transitivity → transBool
         .reflexivity → reflBool
         .antisymmetry → antisymBool
+        .lte2gte → lte2gteBool
+        .lNotLteNeq → lNotLteNeqBool
+        .lt2gt → lt2gtBool
+        .compareLt → compareLtBool
+        .compareLt' → compareLtBool'
+        .compareGt → compareGtBool
+        .compareGt' → compareGtBool'
+        .compareEq → compareEqBool
+        .compareEq' → compareEqBool'
+        .min2if → min2ifBool
+        .max2if → max2ifBool
         
