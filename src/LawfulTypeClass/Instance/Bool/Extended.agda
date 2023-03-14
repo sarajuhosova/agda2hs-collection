@@ -11,27 +11,27 @@ open import LawfulTypeClass.Ord.Extended
 open import LawfulTypeClass.Instance.Bool.Util
 
 instance
-    iLawfulBool : LawfulEq Bool
+    iLawfulBool : LawfulEq₀ Bool
     iLawfulBool = λ where
-        .equality → equalityBool
-        .equality' → equalityBool'
-        .reflexivity → λ _ → refl
-        .symmetry → λ _ _ h → sym h
-        .transitivity → λ _ _ _ hxy hyx → {!  !}
-        .extensionality → λ _ _ f h → cong f h
-        .negation → λ _ _ → refl
+        .equality₀ → equalityBool
+        .equality'₀ → equalityBool'
+        .reflexivity₀ → λ _ → refl
+        .symmetry₀ → λ _ _ h → sym h
+        .transitivity₀ → λ _ _ _ hxy hyx → {!  !}
+        .extensionality₀ → λ _ _ f h → cong f h
+        .negation₀ → λ _ _ → refl
 
     iLawfulBool₁ : LawfulEq₁ Bool
     iLawfulBool₁ = λ where
-        .equality → equalityBool
-        .equality' → equalityBool'
+        .equality₁ → equalityBool
+        .equality'₁ → equalityBool'
 
     iLawfulBool₂ : IsLawfulEq Bool
     iLawfulBool₂ = λ where
         .equality → equalityBool
         .equality' → equalityBool'
 
-    iLawfulOrdBool : LawfulOrd Bool
+    iLawfulOrdBool : IsLawfulOrd Bool
     iLawfulOrdBool = λ where
         .comparability → compBool
         .transitivity → transBool

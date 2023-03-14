@@ -5,7 +5,6 @@ open import Haskell.Prelude
 import Relation.Binary.PropositionalEquality as PEq
 open PEq using (_≡_; sym; cong)
 
-{-# NO_POSITIVITY_CHECK #-}
 record LawEq (e : Set) : Set₁ where
     field
         {{ iEqE }} : Eq e

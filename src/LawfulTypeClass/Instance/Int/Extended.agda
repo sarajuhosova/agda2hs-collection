@@ -11,20 +11,20 @@ open import LawfulTypeClass.Ord.Extended
 open import LawfulTypeClass.Instance.Int.Util
 
 instance
-    iLawfulInt : LawfulEq Int
+    iLawfulInt : LawfulEq₀ Int
     iLawfulInt = λ where
-        .equality → equalityInt
-        .equality' → equalityInt'
-        .reflexivity → λ _ → refl
-        .symmetry → λ _ _ h → sym h
-        .transitivity → λ _ _ _ hxy hyx → {!  !}
-        .extensionality → λ _ _ f h → cong f h
-        .negation → λ _ _ → refl
+        .equality₀ → equalityInt
+        .equality'₀ → equalityInt'
+        .reflexivity₀ → λ _ → refl
+        .symmetry₀ → λ _ _ h → sym h
+        .transitivity₀ → λ _ _ _ hxy hyx → {!  !}
+        .extensionality₀ → λ _ _ f h → cong f h
+        .negation₀ → λ _ _ → refl
 
     iLawfulInt₁ : LawfulEq₁ Int
     iLawfulInt₁ = λ where
-        .equality → equalityInt
-        .equality' → equalityInt'
+        .equality₁ → equalityInt
+        .equality'₁ → equalityInt'
 
     iLawfulInt₂ : IsLawfulEq Int
     iLawfulInt₂ = λ where
