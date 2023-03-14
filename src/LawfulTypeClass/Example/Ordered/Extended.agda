@@ -1,6 +1,8 @@
-module LawfulTypeClass.Example.Extended where
+module LawfulTypeClass.Example.Ordered.Extended where
 
 open import Haskell.Prelude
+
+open import LawfulTypeClass.Example.Ordered.Data
 
 import Relation.Binary.PropositionalEquality as PEq
 open PEq using ( _≡_; refl; sym; cong )
@@ -33,13 +35,6 @@ notLtOrEqIsGt {{ _ }} {{ lOrd }} x y {{ hLt }} {{ hNEq }} =
     ≡⟨⟩
         True
     ∎
-
-data Ordered (a : Set) : Set where
-    Gt : {{ @0 iOrd : Ord a }} → (a' : a) → (a'' : a) → {{ @0 pf : (a' > a'') ≡ True }} → Ordered a
-    Lt : {{ @0 iOrd : Ord a }} → (a' : a) → (a'' : a) → {{ @0 pf : (a' < a'') ≡ True }} → Ordered a
-    E :  {{ @0 iOrd : Ord a }} → (a' : a) → (a'' : a) → {{ @0 pf : a' ≡ a'' }}         → Ordered a
-
-{-# COMPILE AGDA2HS Ordered #-}
 
 order : {{ iOrd : Ord a }} → {{ @0 iLawfulOrd : IsLawfulOrd a }} → (a' : a) → (a'' : a) → Ordered a
 order {{ _ }} {{ lOrd }} left right =

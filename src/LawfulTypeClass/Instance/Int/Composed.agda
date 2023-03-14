@@ -10,8 +10,8 @@ open import LawfulTypeClass.Eq.Composed
 open import LawfulTypeClass.Instance.Int.Util
 
 instance
-  iLawInt : LawEq Int
-  iLawInt = λ where
+  iLawfulInt : LawfulEq Int
+  iLawfulInt = λ where
     .iEqE → iEqInt
     .equality → equalityInt
     .equality' → equalityInt'
