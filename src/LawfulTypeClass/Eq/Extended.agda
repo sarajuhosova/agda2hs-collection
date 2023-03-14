@@ -59,7 +59,7 @@ record LawfulEq₁ (e : Set) {{iEq : Eq e}} : Set₁ where
         
 open LawfulEq₁ ⦃ ... ⦄ public
 
-record LawfulEq₂ (e : Set) {{iEq : Eq e}} : Set₁ where
+record IsLawfulEq (e : Set) {{iEq : Eq e}} : Set₁ where
     field
         equality  : ∀ (x y : e) → (x == y) ≡ True → x ≡ y
         equality' : ∀ (x y : e) → x ≡ y → (x == y) ≡ True
@@ -78,7 +78,7 @@ record LawfulEq₂ (e : Set) {{iEq : Eq e}} : Set₁ where
     transitivity₂ refl refl = refl
 
     -- Extensionality: if x == y = True and f is a function whose return type is an instance of Eq, then f x == f y = True
-    extensionality₂ : { e' : Set } → {{ iEq : Eq e' }} → {{ iLawfulEq : LawfulEq₂ e' }} 
+    extensionality₂ : { e' : Set } → {{ iEq : Eq e' }} → {{ iLawfulEq : IsLawfulEq e' }} 
         → ∀ { x y : e } (f : e → e') → x ≡ y → f x ≡ f y
     extensionality₂ f h = cong f h
 
@@ -86,4 +86,4 @@ record LawfulEq₂ (e : Set) {{iEq : Eq e}} : Set₁ where
     negation₂ : ∀ { x y : e } → (x /= y) ≡ not (x == y)
     negation₂ = refl
         
-open LawfulEq₂ ⦃ ... ⦄ public
+open IsLawfulEq ⦃ ... ⦄ public

@@ -11,12 +11,12 @@ open import LawfulTypeClass.Ord.Extended
 open import LawfulTypeClass.Instance.Ordering.Util
 
 instance
-    iLawfulOrdering : LawfulEq₂ Ordering
+    iLawfulOrdering : IsLawfulEq Ordering
     iLawfulOrdering = λ where
         .equality → equalityOrdering
         .equality' → equalityOrdering'
 
-    iLawfulOrdOrdering : LawfulOrd Ordering
+    iLawfulOrdOrdering : IsLawfulOrd Ordering
     iLawfulOrdOrdering = λ where
         .comparability → compOrdering
         .transitivity → transOrdering

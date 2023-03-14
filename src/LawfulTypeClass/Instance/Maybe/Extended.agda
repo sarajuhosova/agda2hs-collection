@@ -12,12 +12,12 @@ open import LawfulTypeClass.Ord.Extended
 open import LawfulTypeClass.Instance.Maybe.Util
 
 instance
-    iLawfulMaybe : {{ iEqA : Eq a }} → {{ iLawfulEqA : LawfulEq₂ a }} → LawfulEq₂ (Maybe a)
+    iLawfulMaybe : {{ iEqA : Eq a }} → {{ iLawfulEqA : IsLawfulEq a }} → IsLawfulEq (Maybe a)
     iLawfulMaybe = λ where
         .equality → equalityMaybe
         .equality' → equalityMaybe'
 
-    iLawfulOrdMaybe : {{ iOrdA : Ord a }} → {{ iLawfulOrdA : LawfulOrd a }} → LawfulOrd (Maybe a)
+    iLawfulOrdMaybe : {{ iOrdA : Ord a }} → {{ iLawfulOrdA : IsLawfulOrd a }} → IsLawfulOrd (Maybe a)
     iLawfulOrdMaybe = λ where
         .comparability → compMaybe
         .transitivity → transMaybe

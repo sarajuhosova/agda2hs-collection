@@ -26,12 +26,12 @@ instance
         .equality → equalityInt
         .equality' → equalityInt'
 
-    iLawfulInt₂ : LawfulEq₂ Int
+    iLawfulInt₂ : IsLawfulEq Int
     iLawfulInt₂ = λ where
         .equality → equalityInt
         .equality' → equalityInt'
 
-    iLawfulOrdInt : LawfulOrd Int
+    iLawfulOrdInt : IsLawfulOrd Int
     iLawfulOrdInt = λ where
         .comparability → compInt
         .transitivity → transInt

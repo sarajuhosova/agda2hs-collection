@@ -26,7 +26,7 @@ instance
         .equality → equalityBool
         .equality' → equalityBool'
 
-    iLawfulBool₂ : LawfulEq₂ Bool
+    iLawfulBool₂ : IsLawfulEq Bool
     iLawfulBool₂ = λ where
         .equality → equalityBool
         .equality' → equalityBool'

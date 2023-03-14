@@ -7,9 +7,9 @@ open import LawfulTypeClass.Eq.Extended
 import Relation.Binary.PropositionalEquality as PEq
 open PEq using (_≡_; refl; sym; cong)
 
-record LawfulOrd (a : Set) {{iOrd : Ord a}} : Set₁ where
+record IsLawfulOrd (a : Set) {{iOrd : Ord a}} : Set₁ where
     field
-        overlap ⦃ super ⦄ : LawfulEq₂ a
+        overlap ⦃ super ⦄ : IsLawfulEq a
 
         -- Comparability: x <= y || y <= x = True
         comparability : ∀ (x y : a) → (x <= y || y <= x) ≡ True
@@ -50,4 +50,4 @@ record LawfulOrd (a : Set) {{iOrd : Ord a}} : Set₁ where
         -- max x y == if x >= y then x else y = True
         max2if : ∀ (x y : a) → (max x y) ≡ (if (x >= y) then x else y)
         
-open LawfulOrd ⦃ ... ⦄ public
+open IsLawfulOrd ⦃ ... ⦄ public
