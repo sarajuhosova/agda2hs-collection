@@ -3,7 +3,7 @@ module LawfulTypeClass.Eq.Composed where
 open import Haskell.Prelude
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; sym; cong)
+open PEq using (_≡_)
 
 record LawfulEq (e : Set) : Set₁ where
     field

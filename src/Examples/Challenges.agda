@@ -5,20 +5,20 @@ module Examples.Challenges where
 open import Haskell.Prelude
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; refl; cong; sym)
+open PEq using (_≡_; refl)
 open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
 
 -- Incomplete Standard Library --------------------------------
 
-&&-leftAssoc : ∀ (a b c : Bool) → (a && b && c) ≡ True → ((a && b) && c) ≡ True
-&&-leftAssoc True True True h = refl
+-- &&-leftAssoc : ∀ (a b c : Bool) → (a && b && c) ≡ True → ((a && b) && c) ≡ True
+-- &&-leftAssoc True True True h = refl
 
-&&-leftAssoc' : ∀ (a b c : Bool) → (a && b && c) ≡ ((a && b) && c)
-&&-leftAssoc' False b c = refl
-&&-leftAssoc' True b c = refl
+-- &&-leftAssoc' : ∀ (a b c : Bool) → (a && b && c) ≡ ((a && b) && c)
+-- &&-leftAssoc' False b c = refl
+-- &&-leftAssoc' True b c = refl
 
-&&-leftTrue : ∀ (a b : Bool) → (a && b) ≡ True → a ≡ True
-&&-leftTrue True True h = refl
+-- &&-leftTrue : ∀ (a b : Bool) → (a && b) ≡ True → a ≡ True
+-- &&-leftTrue True True h = refl
 
 -- Guards -----------------------------------------------------
 

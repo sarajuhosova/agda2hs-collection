@@ -1,9 +1,9 @@
 module LawfulTypeClass.Eq.Extended where
 
-open import Haskell.Prelude
+open import Haskell.Prelude hiding (IsLawfulEq; equality'; nequality)
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; _≢_; sym; cong)
+open PEq using (_≡_; _≢_)
 
 {-# NO_POSITIVITY_CHECK #-}
 record LawfulEq₀ (e : Set) {{iEq : Eq e}} : Set₁ where

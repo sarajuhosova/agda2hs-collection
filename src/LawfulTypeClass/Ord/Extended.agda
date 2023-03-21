@@ -1,11 +1,11 @@
 module LawfulTypeClass.Ord.Extended where
 
-open import Haskell.Prelude
+open import Haskell.Prelude hiding ( IsLawfulEq; IsLawfulOrd )
 
 open import LawfulTypeClass.Eq.Extended
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; refl; sym; cong)
+open PEq using (_≡_; refl)
 
 record IsLawfulOrd (a : Set) {{iOrd : Ord a}} : Set₁ where
     field

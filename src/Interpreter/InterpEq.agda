@@ -6,7 +6,7 @@ open import Interpreter.Interp using (interp)
 open import Interpreter.Safe using (safeInterp; simplify)
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; refl; cong; sym)
+open PEq using (_≡_; refl)
 open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
 
 ≡-interp : ∀ e → interp e ≡ safeInterp e

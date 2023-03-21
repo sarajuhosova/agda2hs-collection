@@ -1,11 +1,11 @@
 module LawfulTypeClass.Example.Ordered.Extended where
 
-open import Haskell.Prelude
+open import Haskell.Prelude hiding ( IsLawfulOrd )
 
 open import LawfulTypeClass.Example.Ordered.Data
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using ( _≡_; refl; sym; cong )
+open PEq using ( _≡_; refl )
 open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
 
 open import LawfulTypeClass.Eq.Extended
@@ -37,7 +37,7 @@ notLtOrEqIsGt {{ _ }} {{ lOrd }} x y {{ hLt }} {{ hNEq }} =
     ∎
 
 order : {{ iOrd : Ord a }} → {{ @0 iLawfulOrd : IsLawfulOrd a }} → (a' : a) → (a'' : a) → Ordered a
-order {{ _ }} {{ lOrd }} left right =
+order {{ iLawfulOrd = lOrd }} left right =
     if left < right then 
         Lt left right
     else (

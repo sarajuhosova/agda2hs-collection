@@ -2,13 +2,12 @@
 
 module LawfulTypeClass.Instance.Maybe.Util where
 
-open import Haskell.Prelude
+open import Haskell.Prelude hiding ( IsLawfulEq; IsLawfulOrd; equalityMaybe )
 
 open import LawfulTypeClass.Eq.Extended
 open import LawfulTypeClass.Ord.Extended
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using ( _≡_; refl; cong )
 open PEq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
 
 equalityMaybe : {{ iEqA : Eq a }} {{ iLawfulEqA : IsLawfulEq a }}

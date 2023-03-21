@@ -3,7 +3,7 @@ module LawfulTypeClass.Instance.Int.Composed where
 open import Haskell.Prelude
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using ( refl; sym; cong )
+open PEq using ( refl )
 
 open import LawfulTypeClass.Eq.Composed
 

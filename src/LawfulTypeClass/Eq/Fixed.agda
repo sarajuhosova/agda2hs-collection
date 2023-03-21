@@ -3,7 +3,7 @@ module LawfulTypeClass.Eq.Fixed where
 open import Haskell.Prelude using ( Bool; True; not )
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using (_≡_; refl; sym; cong)
+open PEq using (_≡_; refl)
 
 record Eq (a : Set) : Set where
     infix 4 _==_ _/=_

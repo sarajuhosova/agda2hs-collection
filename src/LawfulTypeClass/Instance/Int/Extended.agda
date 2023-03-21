@@ -1,9 +1,9 @@
 module LawfulTypeClass.Instance.Int.Extended where
 
-open import Haskell.Prelude
+open import Haskell.Prelude hiding ( IsLawfulEq; IsLawfulOrd )
 
 import Relation.Binary.PropositionalEquality as PEq
-open PEq using ( refl; sym; cong )
+open PEq using ( refl )
 
 open import LawfulTypeClass.Eq.Extended
 open import LawfulTypeClass.Ord.Extended
